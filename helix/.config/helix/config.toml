@@ -1,0 +1,40 @@
+theme = "gruvbox_material_dark_soft"
+
+[editor]
+clipboard-provider = "x-clip"
+soft-wrap.enable = true
+line-number = "relative"
+middle-click-paste=false
+
+[editor.lsp]
+display-messages= false
+display-inlay-hints = true
+auto-signature-help = true
+
+[editor.auto-save]
+after-delay.enable = true
+after-delay.timeout = 3000
+
+[keys.normal]
+#y = "yank_main_section_to_clipboard"
+#p = "paste_clipboard_after"
+#P = "paste_clipboard_before"
+C-g = [
+  ":write-all",
+  ":insert-output lazygit >/dev/tty",
+  ":reload all",
+  ":redraw",
+  ":set mouse false",
+  ":set mouse true",
+]
+
+[keys.normal.space]
+e = [
+  ':sh rm -f /tmp/unique-file',
+  ':insert-output yazi %{buffer_name} --chooser-file=/tmp/unique-file',
+  ':open %sh{cat /tmp/unique-file}',
+  ':redraw',
+  ':set mouse false',
+  ':set mouse true',
+]
+[keys.insert]

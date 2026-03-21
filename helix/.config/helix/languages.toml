@@ -1,0 +1,22 @@
+[[language]]
+name = "c"
+indent = { tab-width = 8, unit = "\t" }
+language-servers = ["clangd"]
+
+[[language]]
+name = "cpp"
+indent = { tab-width = 8, unit = "\t" }
+language-servers = ["clangd"]
+
+[[language]]
+name = "rust"
+auto-format = true
+language-servers = ["rust-analyzer"]
+[language-server.rust-analyzer]
+command = "rust-analyzer"
+
+[language-server.clangd]
+command= "clangd"
+args = [
+  "--compile-commands-dir=build/Debug"
+]

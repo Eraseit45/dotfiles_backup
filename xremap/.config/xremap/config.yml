@@ -1,0 +1,5 @@
+modmap:
+  - name: global disable capslock
+    remap:
+      CapsLock: Ctrl_L
+      
