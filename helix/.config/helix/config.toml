@@ -13,7 +13,7 @@ auto-signature-help = true
 
 [editor.auto-save]
 after-delay.enable = true
-after-delay.timeout = 3000
+after-delay.timeout = 30000
 
 [keys.normal]
 #y = "yank_main_section_to_clipboard"

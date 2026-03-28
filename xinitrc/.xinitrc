@@ -5,7 +5,7 @@ export SDL_IM_MODULE=fcitx
 export GLFW_IM_MODULE=ibus
 export XDG_SESSION_TYPE=x11
 
-exec picom &
-exec .cargo/bin/xremap ~/.config/xremap/config.yml &
-exec fcitx5 &
+picom &
+xremap ~/.config/xremap/config.yml &
+fcitx5 &
 exec i3

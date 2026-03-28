@@ -1,5 +1,7 @@
 modmap:
   - name: global disable capslock
     remap:
-      CapsLock: Ctrl_L
-      
+      CapsLock:
+        held: Ctrl_L
+        alone: esc
+        along_time_out_millis: 200

@@ -75,6 +75,9 @@ bindsym $mod+Print exec ~/.local/bin/screenshots.sh
 
 # power management
 bindsym $mod+p exec ~/.local/bin/power
+
+# network management
+bindsym $alt+w exec ~/.local/bin/wifi
 # change focus
 bindsym $mod+h focus left
 bindsym $mod+j focus down

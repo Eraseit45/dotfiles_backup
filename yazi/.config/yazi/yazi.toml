@@ -1,0 +1,82 @@
+# =============================
+#   Yazi Custom Config
+#   For: feh / mpv / zathura / helix
+# =============================
+
+[manager]
+show_hidden = true
+ratio = [1, 4, 3]
+[opener]
+
+# ---- Text files ----
+text = [
+  { run = 'hx %s', block = true }
+]
+# ---- WPS Office ----
+wps_doc = [
+  { run = '/usr/bin/wps %s', orphan = true }
+]
+wps_ppt = [
+  { run = '/usr/bin/wpp %s', orphan = true }
+]
+wps_xls = [
+  { run = '/usr/bin/et %s', orphan = true }
+]
+# ---- Archive extract ----
+unzip = [
+  { run = 'unzip -o %s', block = true }
+]
+unrar = [
+  { run = 'unrar x -o+ %s', block = true }
+]
+sevenzip = [
+  { run = '7z x -y %s', block = true }
+]
+untar_gz = [
+  { run = 'tar -xzf %s -C .', block = true }
+]
+untar_xz = [
+  { run = 'tar -xJf %s -C .', block = true }
+]
+untar = [
+  { run = 'tar -xf %s -C .', block = true }
+]
+# ---- Images ----
+image = [
+  { run = 'feh %s', orphan = true }
+]
+# ---- Video & Audio ----
+video = [
+  { run = 'mpv %s', orphan = true }
+]
+audio = [
+  { run = 'mpv %s', orphan = true }
+]
+# ---- PDF ----
+pdf = [
+  { run = 'zathura %s', orphan = true }
+]
+# ---- Default fallback ----
+[open]
+rules = [
+  { url = "*.doc", use = "wps_doc" },
+  { url = "*.docx", use = "wps_doc" },
+  { url = "*.ppt", use = "wps_ppt" },
+  { url = "*.pptx", use = "wps_ppt" },
+  { url = "*.xls", use = "wps_xls" },
+  { url = "*.xlsx", use = "wps_xls" },
+  { url = "*.zip", use = "unzip" },
+  { url = "*.rar", use = "unrar" },
+  { url = "*.7z", use = "sevenzip" },
+  { url = "*.tar.gz", use = "untar_gz" },
+  { url = "*.tgz", use = "untar_gz" },
+  { url = "*.tar.xz", use = "untar_xz" },
+  { url = "*.txz", use = "untar_xz" },
+  { url = "*.tar", use = "untar" },
+  { mime = "text/*", use = "text" },
+  { mime = "image/*", use = "image" },
+  { mime = "video/*", use = "video" },
+  { mime = "audio/*", use = "audio" },
+  { mime = "application/pdf", use = "pdf" },
+  { mime = "application/*zip", use = "unzip" },
+]
