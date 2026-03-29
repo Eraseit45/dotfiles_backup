@@ -1,0 +1,5 @@
+set adjust-open "width"
+
+set smooth-scroll "true"
+
+set scroll-step 80
