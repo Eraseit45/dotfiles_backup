@@ -34,10 +34,10 @@ alias blog='cd ~/misc/blog'
 alias prj='cd ~/misc/projects'
 alias mat='cd ~/misc/material'
 alias down='cd ~/Downloads/'
-
+alias temp='cd ~/misc/temp'
 # for a shortcut
 alias za='zathura'
-
+alias cal='calcurse'
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
