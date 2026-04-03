@@ -15,4 +15,4 @@ export GLFW_IM_MODULE=fcitx5
 
 
 #. "$HOME/.cargo/env"
-export PATH="/usr/sbin:$HOME/.local/bin:$PATH"
+export PATH="/usr/local/go/bin:/usr/sbin:$HOME/.local/bin:$PATH"
