@@ -11,9 +11,12 @@ eval "$(/opt/oh-my-posh/oh-my-posh init bash --config $HOME/.config/oh-my-posh/c
 fi
 
 # helix
+ 
 export HELIX_RUNTIME=~/.local/src/helix/runtime
+
 # cargo
 . "$HOME/.cargo/env"
+
 # for devide .bashrc between local and the docker(ros)
 if [ -f /run/.containerenv ] || [ -n "$CONTAINER_ID" ]; then
   if [ -f "/opt/ros/foxy/setup.bash" ]; then
@@ -23,7 +26,13 @@ if [ -f /run/.containerenv ] || [ -n "$CONTAINER_ID" ]; then
   fi
 fi
 
+# This loads nvm bash_completion
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+
 # daily use
+ 
 # highlights in search/list
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
@@ -35,10 +44,10 @@ alias prj='cd ~/misc/projects'
 alias mat='cd ~/misc/material'
 alias down='cd ~/Downloads/'
 alias temp='cd ~/misc/temp'
+alias dot='cd ~/dotfiles'
+
 # for a shortcut
 alias za='zathura'
 alias cal='calcurse'
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+alias lzg='lazygit'
+alias lzd='lazydocker'
