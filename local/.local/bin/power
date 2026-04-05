@@ -1,0 +1,26 @@
+#!/usr/bin/sh
+
+choice="$(printf '%s\n' \
+    'poweroff' \
+    'reboot' \
+    'suspend' \
+    'hibernate' \
+    | dmenu -i -l 4 -p power)"
+
+case "$choice" in
+    poweroff)
+        poweroff
+        ;;
+    reboot)
+        reboot
+        ;;
+    suspend)
+        systemctl suspend
+        ;;
+    hibernate)
+        systemctl hibernate
+        ;;
+    *)
+        exit 0
+        ;;
+esac

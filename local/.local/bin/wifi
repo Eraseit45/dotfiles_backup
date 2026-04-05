@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+nmcli dev wifi rescan >/dev/null 2>&1 || true
+
+connected_dev="$(
+  nmcli -t -f DEVICE,TYPE,STATE dev 2>/dev/null | awk -F: '$2 == "wifi" && $3 == "connected" { print $1; exit }'
+)"
+
+if [[ -n "${connected_dev}" ]]; then
+  choice="$(
+    printf 'no\nyes\n' | dmenu -i -l 5 -p 'Disconnect current Wi-Fi?'
+  )"
+  if [[ "${choice}" != "yes" ]]; then
+    exit 0
+  fi
+
+  nmcli dev disconnect "${connected_dev}" >/dev/null 2>&1 || true
+fi
+
+ssid="$(
+  nmcli -t -f SSID,SECURITY,SIGNAL dev wifi list \
+    | awk -F: 'NF && $1 != "" { print $1 "\t[" $3 "%]  " $2 }' \
+    | dmenu -i -l 5 -p 'Select Wi-Fi' \
+    | cut -f1
+)"
+
+[[ -n "${ssid}" ]] || exit 0
+
+nmcli dev wifi connect "${ssid}" >/dev/null
