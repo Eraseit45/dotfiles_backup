@@ -28,6 +28,15 @@ C-g = [
   ":set mouse true",
 ]
 
+C-p = [
+  ":write-all",
+  ":insert-output scooter >/dev/tty",
+  ":reload all",
+  ":redraw",
+  ":set mouse false",
+  ":set mouse true",
+]
+
 [keys.normal.space]
 e = [
   ':sh rm -f /tmp/unique-file',
