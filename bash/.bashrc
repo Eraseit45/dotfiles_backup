@@ -19,8 +19,8 @@ export HELIX_RUNTIME=~/.local/src/helix/runtime
 
 # for devide .bashrc between local and the docker(ros)
 if [ -f /run/.containerenv ] || [ -n "$CONTAINER_ID" ]; then
-  if [ -f "/opt/ros/foxy/setup.bash" ]; then
-    source /opt/ros/foxy/setup.bash
+  if [ -f "/opt/ros/noetic/setup.bash" ]; then
+#    source /opt/ros/foxy/setup.bash
     source /opt/ros/noetic/setup.bash
     echo "ROS environment initialized inside the container"
   fi
@@ -33,6 +33,9 @@ export NVM_DIR="$HOME/.nvm"
 
 # daily use
  
+# prime run
+alias prime-run='__NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia'
+
 # highlights in search/list
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
@@ -45,9 +48,17 @@ alias mat='cd ~/misc/material'
 alias down='cd ~/Downloads/'
 alias temp='cd ~/misc/temp'
 alias dot='cd ~/dotfiles'
-
+alias pic='cd ~/Pictures'
 # for a shortcut
 alias za='zathura'
 alias cal='calcurse'
 alias lzg='lazygit'
 alias lzd='lazydocker'
+# >>> nvidia-prime-gazebo (ub20-noetic) >>>
+# Enable NVIDIA GLX offload in this distrobox for Gazebo/rviz GLX apps.
+if [ "${DBX_CONTAINER:-}" = "ub20-noetic" ]; then
+  export LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu/nvidia/current${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}
+  export __NV_PRIME_RENDER_OFFLOAD=1
+  export __GLX_VENDOR_LIBRARY_NAME=nvidia
+fi
+# <<< nvidia-prime-gazebo (ub20-noetic) <<<
