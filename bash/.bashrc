@@ -31,11 +31,16 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
+
+# Enable NVIDIA GLX offload in this distrobox for Gazebo/rviz GLX apps.
+if [ -f /run/.containerenv ] || [ -n "B20-noetic" ]; then
+  export LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu/nvidia/current${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}
+  export __NV_PRIME_RENDER_OFFLOAD=1
+  export __GLX_VENDOR_LIBRARY_NAME=nvidia
+fi
+ 
 # daily use
  
-# prime run
-alias prime-run='__NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia'
-
 # highlights in search/list
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
@@ -47,18 +52,10 @@ alias prj='cd ~/misc/projects'
 alias mat='cd ~/misc/material'
 alias down='cd ~/Downloads/'
 alias temp='cd ~/misc/temp'
-alias dot='cd ~/dotfiles'
+alias dot='cd ~/misc/dotfiles'
 alias pic='cd ~/Pictures'
 # for a shortcut
 alias za='zathura'
 alias cal='calcurse'
 alias lzg='lazygit'
 alias lzd='lazydocker'
-# >>> nvidia-prime-gazebo (ub20-noetic) >>>
-# Enable NVIDIA GLX offload in this distrobox for Gazebo/rviz GLX apps.
-if [ "${DBX_CONTAINER:-}" = "ub20-noetic" ]; then
-  export LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu/nvidia/current${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}
-  export __NV_PRIME_RENDER_OFFLOAD=1
-  export __GLX_VENDOR_LIBRARY_NAME=nvidia
-fi
-# <<< nvidia-prime-gazebo (ub20-noetic) <<<
