@@ -26,7 +26,6 @@ exec --no-startup-id dex --autostart --environment i3
 # exec clipmenud to manage the clipboard
 exec --no-startup-id clipmenud
 
-
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
 
@@ -72,6 +71,7 @@ bindsym $mod+v exec clipmenu
 
 # screenshot
 bindsym $mod+Print exec ~/.local/bin/screenshots.sh
+for_window [title="pin-screenshot"] floating enable, sticky enable
 
 # power management
 bindsym $mod+p exec ~/.local/bin/power
