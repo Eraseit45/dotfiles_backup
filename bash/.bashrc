@@ -52,7 +52,7 @@ alias prj='cd ~/misc/projects'
 alias mat='cd ~/misc/material'
 alias down='cd ~/Downloads/'
 alias temp='cd ~/misc/temp'
-alias dot='cd ~/misc/dotfiles'
+alias dot='cd ~/dotfiles'
 alias pic='cd ~/Pictures'
 # for a shortcut
 alias za='zathura'
