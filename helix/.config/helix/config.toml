@@ -15,6 +15,10 @@ auto-signature-help = true
 after-delay.enable = true
 after-delay.timeout = 30000
 
+[editor.indent-guides]
+render = true
+character = "|"
+
 [keys.normal]
 #y = "yank_main_section_to_clipboard"
 #p = "paste_clipboard_after"
