@@ -15,6 +15,11 @@ language-servers = ["rust-analyzer"]
 [language-server.rust-analyzer]
 command = "rust-analyzer"
 
+[[language]]
+name = "markdown"
+[language.auto-pairs]
+'$' = '$'
+# language_server
 [language-server.clangd]
 command= "clangd"
 args = [
