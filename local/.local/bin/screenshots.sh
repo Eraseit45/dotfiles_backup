@@ -26,21 +26,25 @@ fi
 case "$SAVE_MODE" in
 
     "Save to File")
+        sleep 0.3
         $CMD "$FILE"
         notify-send "Screenshot saved to file" "$FILE"
         ;;
 
     "Save to Clipboard")
+        sleep 0.3
         $CMD | xclip -selection clipboard -t image/png
         notify-send "Screenshot copied to clipboard"
         ;;
 
     "Save to Both")
+        sleep 0.3
         $CMD | tee "$FILE" | xclip -selection clipboard -t image/png
         notify-send "Saved + Copied" "$FILE"
         ;;
 
     "Pin at Screen")
+        sleep 0.3
         TMPFILE=$(mktemp /tmp/screenshot-pin-XXXXXX.png)
         $CMD "$TMPFILE"
         feh --title "pin-screenshot" "$TMPFILE" &
