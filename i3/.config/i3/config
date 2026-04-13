@@ -26,6 +26,8 @@ exec --no-startup-id dex --autostart --environment i3
 # exec clipmenud to manage the clipboard
 exec --no-startup-id clipmenud
 
+# polybar 
+exec --no-startup-id polybar
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
 
@@ -46,6 +48,11 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 # Use brightnessctl to control the brightness of display
 bindsym XF86MonBrightnessUp   exec --no-startup-id brightnessctl set +5% && $refresh_i3status
 bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%- && $refresh_i3status
+
+# disable border and tags
+ 
+default_border none
+default_floating_border none
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -69,15 +76,20 @@ bindsym $mod+Control+Return exec --no-startup-id dmenu_run
 # start clipmenu (a clipboard manager based on dmenu)
 bindsym $mod+v exec clipmenu 
 
+# self-wrote scripts
 # screenshot
 bindsym $mod+Print exec ~/.local/bin/screenshots.sh
-for_window [title="pin-screenshot"] floating enable, sticky enable
 
 # power management
 bindsym $mod+p exec ~/.local/bin/power
 
 # network management
 bindsym $alt+w exec ~/.local/bin/wifi
+
+# picom themes change
+bindsym $alt+t exec ~/.local/bin/change_themes
+
+bindsym $alt+s exec ~/.local/bin/scan_qrcode
 # change focus
 bindsym $mod+h focus left
 bindsym $mod+j focus down
@@ -122,6 +134,10 @@ bindsym $mod+a focus parent
 
 # focus the child container
 #bindsym $mod+d focus child
+ 
+# window rules
+for_window [title="pin-screenshot"] floating enable, sticky enable
+for_window [title="Yazi: erasemyself45"] floating enable, sticky enable
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
@@ -196,6 +212,3 @@ bindsym $mod+r mode "resize"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
-bar {
-        status_command i3status
-}
