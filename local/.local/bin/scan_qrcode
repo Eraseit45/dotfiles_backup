@@ -1,0 +1,37 @@
+#!/bin/bash
+
+set -u
+
+require_cmd() {
+    if ! command -v "$1" >/dev/null 2>&1; then
+        notify-send "scan_qrcode" "Missing dependency: $1"
+        exit 1
+    fi
+}
+
+require_cmd maim
+require_cmd zbarimg
+require_cmd xclip
+require_cmd notify-send
+
+TMPFILE=$(mktemp /tmp/scan-qrcode-XXXXXX.png)
+cleanup() {
+    rm -f "$TMPFILE"
+}
+trap cleanup EXIT
+
+sleep 0.3
+if ! maim -s "$TMPFILE"; then
+    notify-send "scan_qrcode" "Screenshot canceled or failed"
+    exit 1
+fi
+
+RAW_RESULT=$(zbarimg --quiet "$TMPFILE" 2>/dev/null || true)
+URL=$(printf '%s\n' "$RAW_RESULT" | sed -n 's/^[^:]*:\(https\?:\/\/[^[:space:]]*\).*/\1/p' | head -n 1)
+
+if [ -n "$URL" ]; then
+    printf '%s' "$URL" | xclip -selection clipboard
+    notify-send "QR scanned" "URL copied to clipboard\n$URL"
+else
+    notify-send "QR scanned" "No web URL found in selected area"
+fi

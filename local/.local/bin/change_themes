@@ -1,0 +1,16 @@
+#!/usr/bin/bash
+
+set -euo pipefail
+
+THEME_DIR="${HOME}/.config/picom"
+
+selected="$(
+  ls "${THEME_DIR}"/*.conf \
+    | xargs -I{} basename {} .conf \
+    | dmenu -i -l 5 -p 'Picom theme'
+)"
+
+[[ -n "${selected}" ]] || exit 0
+
+pkill -x picom || true
+picom --config "${THEME_DIR}/${selected}.conf" &
