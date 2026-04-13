@@ -13,6 +13,7 @@ export QT_IM_MODULE=fcitx5
 export XMODIFIERS=@im=fcitx5
 export GLFW_IM_MODULE=fcitx5
 
-
+# xdg-desktop-portal-termfilechooser
+export XDG_CURRENT_DESKTOP=i3
 #. "$HOME/.cargo/env"
 export PATH="/usr/local/go/bin:/usr/sbin:$HOME/.local/bin:$PATH"
