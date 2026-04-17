@@ -5,12 +5,13 @@ export SDL_IM_MODULE=fcitx
 export GLFW_IM_MODULE=ibus
 export XDG_SESSION_TYPE=x11
 
-picom --config ~/.config/picom/picom.conf &
-
-feh --bg-scale ~/Pictures/wallpapers/iceland-wallpaper.jpg&
+picom --config ~/.config/picom/default.conf &
 
 xremap ~/.config/xremap/config.yml &
 
 fcitx5 &
 
 exec i3
+
+
+
