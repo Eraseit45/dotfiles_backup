@@ -54,8 +54,10 @@ bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%- && $ref
 
 # disable border and tags
  
-default_border none
-default_floating_border none
+default_border pixel 1 
+
+client.focused #989710 #285577 #ffffff  #989710 #989710
+# default_floating_border none
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
