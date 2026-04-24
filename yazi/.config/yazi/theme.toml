@@ -1,0 +1,24 @@
+[mgr]
+cwd = { fg = "#fabd2f", bold = true }
+hovered = { fg = "#282828", bg = "#83a598" }
+preview_hovered = { bg = "#504945" }
+border_style = { fg = "#504945" }
+
+[mode]
+normal_main = { bg = "#98971a", fg = "#282828", bold = true }
+select_main = { bg = "#d79921", fg = "#282828", bold = true }
+unset_main  = { bg = "#cc241d", fg = "#fbf1c7", bold = true }
+
+[status]
+sep_left  = { open = "", close = "" }
+sep_right = { open = "", close = "" }
+
+[indicator]
+padding = { open = "▐", close = "▌" }
+[filetype]
+rules = [
+  { url = "*/", fg = "#83a598", bold = true },
+  { url = "*",  is = "link", fg = "#b8bb26" },
+  { url = "*",  is = "exec", fg = "#b8bb26", bold = true },
+  { url = "*",  fg = "#ebdbb2" },
+]
