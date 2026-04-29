@@ -1,17 +1,23 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
-PS1='[\u@\h \W]\$ '
+PS1='\[\e[38;2;152;151;18m\]\u@\h \[\e[38;2;119;151;113m\]$(short_path) \$ \[\e[0m\]\[$(parse_git_branch)\e\]\$ '
+parse_git_branch() {
+  git branch 2>/dev/null | grep '*' | sed -n 's/^\* \(.*\)/(\1)/p'  
+}
 
+short_path() {
+  pwd | sed -E "s|^$HOME|~|" | awk -F/ '{
+      if (NF <= 3) {
+        print $0
+      }else{
+        print $1"/.../"$NF
+      }
+    }'
+}
 # vi_mod
 set -o vi
 
-#oh-my-posh
-if [ ! -f /run/.containerenv ] || [ -z "$CONTAINER_ID" ]; then
-eval "$(/opt/oh-my-posh/oh-my-posh init bash --config $HOME/.config/oh-my-posh/catppuccin_mocha.omp.json)"
-fi
-
 # helix
- 
 export HELIX_RUNTIME=~/.local/src/helix/runtime
 
 # cargo
@@ -62,3 +68,6 @@ alias ff='fastfetch'
 alias dxe='distrobox enter'
 alias gcb='git checkout -b'
 alias gcm='git commit -m'
+
+# Added by Quartus Prime software
+export SALT_LICENSE_FILE="$SALT_LICENSE_FILE;/home/erasemyself45/.altera.quartus/questa_lic.dat"
