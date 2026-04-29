@@ -94,7 +94,11 @@ bindsym $alt+w exec ~/.local/bin/wifi
 # picom themes change
 bindsym $alt+t exec ~/.local/bin/change_themes
 
+# qrcode_scan
 bindsym $alt+s exec ~/.local/bin/scan_qrcode
+
+# music_playing
+bindsym $mod+m exec ~/.local/bin/music
 # change focus
 bindsym $mod+h focus left
 bindsym $mod+j focus down
