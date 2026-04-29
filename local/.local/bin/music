@@ -1,0 +1,19 @@
+#!/bin/bash
+
+choice=$(printf "Play\nPause\nNext\nPrevious\nSearch" | dmenu -l 5 -p "MPC Control:")
+
+search_music(){
+    selection=$(mpc listall | dmenu -i -l 8 -p "Search Library:")
+    if [ -n "$selection" ]; then
+    mpc clear 
+    mpc add
+    mpc play
+    fi
+}
+case "$choice" in
+    Play)   mpc play ;;
+    Pause)  mpc pause ;;
+    Next)   mpc next ;;
+    Previous) mpc prev ;;
+    Search)  $(search_music)
+esac
